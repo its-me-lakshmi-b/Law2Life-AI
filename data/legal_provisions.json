@@ -1,0 +1,136 @@
+[
+    {
+        "provision_id": "EMP_001",
+        "title": "Employment Terms and Conditions",
+        "topic": "employment",
+        "document_types": [
+            "employment_agreement"
+        ],
+        "keywords": [
+            "employee",
+            "employer",
+            "employment",
+            "salary",
+            "working hours",
+            "leave",
+            "termination"
+        ],
+        "description": "Employment agreements may contain terms governing the employment relationship, including duties, compensation, working arrangements, leave and termination.",
+        "conditions": [
+            "The provision is relevant when the uploaded document concerns an employment relationship."
+        ],
+        "exceptions": [],
+        "source": {
+            "name": "Authoritative legal source to be linked",
+            "url": "",
+            "jurisdiction": "India"
+        }
+    },
+    {
+        "provision_id": "EMP_002",
+        "title": "Termination and Notice",
+        "topic": "termination",
+        "document_types": [
+            "employment_agreement",
+            "termination_letter"
+        ],
+        "keywords": [
+            "termination",
+            "notice",
+            "notice period",
+            "terminate",
+            "termination notice"
+        ],
+        "description": "Employment documents may specify conditions relating to termination and notice.",
+        "conditions": [
+            "A termination or notice clause is present in the document."
+        ],
+        "exceptions": [
+            "The applicable rule may depend on the employment relationship, applicable law, contract terms and circumstances."
+        ],
+        "source": {
+            "name": "Authoritative legal source to be linked",
+            "url": "",
+            "jurisdiction": "India"
+        }
+    },
+    {
+        "provision_id": "EMP_003",
+        "title": "Payment of Salary",
+        "topic": "salary",
+        "document_types": [
+            "employment_agreement"
+        ],
+        "keywords": [
+            "salary",
+            "wages",
+            "monthly salary",
+            "payable",
+            "payment"
+        ],
+        "description": "Employment documents commonly specify compensation and payment terms.",
+        "conditions": [
+            "The document contains salary or payment terms."
+        ],
+        "exceptions": [],
+        "source": {
+            "name": "Authoritative legal source to be linked",
+            "url": "",
+            "jurisdiction": "India"
+        }
+    },
+    {
+        "provision_id": "EMP_004",
+        "title": "Leave and Leave Conditions",
+        "topic": "leave",
+        "document_types": [
+            "employment_agreement"
+        ],
+        "keywords": [
+            "leave",
+            "paid leave",
+            "leave request",
+            "absence",
+            "leave policy"
+        ],
+        "description": "Employment documents may contain terms governing leave requests and leave conditions.",
+        "conditions": [
+            "The document contains a leave-related clause."
+        ],
+        "exceptions": [
+            "The applicable leave entitlement may depend on the applicable employment law, establishment and circumstances."
+        ],
+        "source": {
+            "name": "Authoritative legal source to be linked",
+            "url": "",
+            "jurisdiction": "India"
+        }
+    },
+    {
+        "provision_id": "EMP_005",
+        "title": "Confidentiality Obligations",
+        "topic": "confidentiality",
+        "document_types": [
+            "employment_agreement"
+        ],
+        "keywords": [
+            "confidentiality",
+            "confidential",
+            "non-public information",
+            "business information",
+            "trade information"
+        ],
+        "description": "Employment agreements may impose contractual confidentiality obligations concerning specified information.",
+        "conditions": [
+            "The document contains a confidentiality clause."
+        ],
+        "exceptions": [
+            "The enforceability and scope of a contractual confidentiality obligation depend on the applicable law and circumstances."
+        ],
+        "source": {
+            "name": "Authoritative legal source to be linked",
+            "url": "",
+            "jurisdiction": "India"
+        }
+    }
+]

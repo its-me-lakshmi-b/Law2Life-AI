@@ -1,0 +1,72 @@
+[
+    {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Employment Terms"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Salary"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Leave"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Termination"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Confidentiality"
+    },
+    {
+        "source": "Employment Terms",
+        "relation": "GOVERNS",
+        "target": "Employee"
+    },
+    {
+        "source": "Employment Terms",
+        "relation": "GOVERNS",
+        "target": "Employer"
+    },
+    {
+        "source": "Salary",
+        "relation": "PAID_TO",
+        "target": "Employee"
+    },
+    {
+        "source": "Leave",
+        "relation": "AVAILABLE_TO",
+        "target": "Employee"
+    },
+    {
+        "source": "Leave",
+        "relation": "REQUIRES_NOTICE",
+        "target": "Leave Notice Period"
+    },
+    {
+        "source": "Termination",
+        "relation": "REQUIRES",
+        "target": "Notice Period"
+    },
+    {
+        "source": "Termination",
+        "relation": "SUBJECT_TO",
+        "target": "Applicable Law"
+    },
+    {
+        "source": "Confidentiality",
+        "relation": "PROTECTS",
+        "target": "Confidential Information"
+    },
+    {
+        "source": "Confidentiality",
+        "relation": "CONTINUES_AFTER",
+        "target": "Employment"
+    }
+]
