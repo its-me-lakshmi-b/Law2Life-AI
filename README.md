@@ -6,7 +6,7 @@ Law2Life AI is an end-to-end intelligent legal document advisor. It allows users
 
 ---
 
-## 🏛️ Key Features
+## Key Features
 
 1. **Robust Multi-Format Document Processing**:
    - Native PDF extraction via PyMuPDF with page-by-page OCR fallback for scanned contracts.
@@ -96,7 +96,7 @@ User Document (PDF / DOCX / Image)
 
 ---
 
-## 🚀 Quickstart & Local Setup
+##  Quickstart & Local Setup
 
 ### Prerequisites
 - Python 3.11+
@@ -142,7 +142,7 @@ Open your browser to:
 
 ---
 
-## 🐳 Docker Deployment
+##  Docker Deployment
 
 To build and run Law2Life AI via Docker:
 
@@ -159,7 +159,7 @@ curl http://localhost:8000/api/health
 
 ---
 
-## 📡 API Reference
+##  API Reference
 
 ### 1. `POST /api/upload`
 Uploads a document (PDF, DOCX, PNG, JPG, JPEG) up to 15 MB. Sanitizes filename, performs extraction and initial classification, and records metadata in SQLite.
