@@ -9,10 +9,7 @@
 
     <title>Law2Life AI - Analysis Dashboard</title>
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
 
@@ -21,638 +18,571 @@
 
 <body>
 
-<!-- ================= NAVBAR ================= -->
+    <!-- ================= NAVBAR ================= -->
 
-<nav class="navbar navbar-dark">
+    <nav class="navbar navbar-dark">
 
-    <div class="container">
+        <div class="container">
 
-        <a
-            class="navbar-brand"
-            href="index.html"
-        >
-            ⚖ Law2Life AI
-        </a>
+            <a class="navbar-brand" href="index.html">
+                ⚖ Law2Life AI
+            </a>
 
-        <span class="navbar-text">
-            Legal Analysis Dashboard
-        </span>
-
-    </div>
-
-</nav>
-
-
-<!-- ================= MAIN DASHBOARD ================= -->
-
-<main class="dashboard-container">
-
-    <!-- HEADER -->
-
-    <div class="dashboard-header">
-
-        <div>
-
-            <h1>Legal Document Analysis</h1>
-
-            <p id="documentName">
-                Document
-            </p>
+            <span class="navbar-text">
+                Legal Analysis Dashboard
+            </span>
 
         </div>
 
+    </nav>
 
-        <a
-            href="index.html"
-            class="btn btn-outline-primary"
-        >
-            Analyze Another Document
-        </a>
 
-    </div>
+    <!-- ================= MAIN DASHBOARD ================= -->
 
+    <main class="dashboard-container">
 
-<!-- ================= DASHBOARD TABS ================= -->
+        <!-- HEADER -->
 
-<div class="dashboard-tabs">
-
-    <button class="dashboard-tab active" data-tab="overview">
-        Overview
-    </button>
-
-    <button class="dashboard-tab" data-tab="rights">
-        Rights & Duties
-    </button>
-
-    <button class="dashboard-tab" data-tab="conflicts">
-    Potential Issues
-    </button>
-
-    <button class="dashboard-tab" data-tab="risk">
-        Risk & Actions
-    </button>
-
-    <button class="dashboard-tab" data-tab="evidence">
-        Legal Evidence
-    </button>
-
-    <button class="dashboard-tab" data-tab="explanation">
-        Explanation
-    </button>
-
-    <button class="dashboard-tab" data-tab="questions">
-        Ask Question
-    </button>
-
-</div>
-
-
-<!-- ================= DOCUMENT INFORMATION ================= -->
-
-<section
-    class="dashboard-card tab-content active-tab"
-    data-tab-content="overview"
->
-    
-
-        <h2>Document Information</h2>
-
-        <div class="info-grid">
-
-            <div class="info-item">
-
-                <span class="info-label">
-                    Document Type
-                </span>
-
-                <strong id="documentType">
-                    Detecting...
-                </strong>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <span class="info-label">
-                    Analysis Status
-                </span>
-
-                <strong id="analysisStatus">
-                    Processing
-                </strong>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <span class="info-label">
-                    Entities Identified
-                </span>
-
-                <strong id="entityCount">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="info-item">
-
-                <span class="info-label">
-                    Clauses Identified
-                </span>
-
-                <strong id="clauseCount">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ================= SUMMARY ================= -->
-
-    <section
-    class="dashboard-card tab-content active-tab"
-    data-tab-content="overview"
-    >
-
-        <h2>📄 Simplified Summary</h2>
-
-        <div
-            id="summary"
-            class="result-box"
-        >
-            Analyzing document...
-        </div>
-
-    </section>
-
-
-    <!-- ================= RIGHTS + OBLIGATIONS ================= -->
-
-    <div
-    class="dashboard-row tab-content"
-    data-tab-content="rights"
-    >
-
-        <!-- RIGHTS -->
-
-        <section class="dashboard-card half-card">
-
-            <h2>✓ Your Rights</h2>
-
-            <div id="rightsContainer">
-
-                <p class="empty-message">
-                    No rights identified yet.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- OBLIGATIONS -->
-
-        <section class="dashboard-card half-card">
-
-            <h2>⚠ Your Obligations</h2>
-
-            <div id="obligationsContainer">
-
-                <p class="empty-message">
-                    No obligations identified yet.
-                </p>
-
-            </div>
-
-        </section>
-
-    </div>
-
-
-    <!-- ================= DEADLINES + PENALTIES ================= -->
-
-    <div
-    class="dashboard-row tab-content"
-    data-tab-content="rights"
-    >
-
-
-        <section class="dashboard-card half-card">
-
-            <h2>Important Deadlines</h2>
-
-            <div id="deadlinesContainer">
-
-                <p class="empty-message">
-                    No deadlines identified.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section class="dashboard-card half-card">
-
-            <h2>⚠ Penalties / Consequences</h2>
-
-            <div id="penaltiesContainer">
-
-                <p class="empty-message">
-                    No penalties identified.
-                </p>
-
-            </div>
-
-        </section>
-
-    </div>
-
-    <!-- ===================================================== -->
-    <!-- CORE NOVELTY: CONFLICT DETECTION                      -->
-    <!-- ===================================================== -->
-
-    <section
-    class="dashboard-card novelty-card tab-content"
-    data-tab-content="conflicts"
-    >
-
-        <div class="section-heading">
+        <div class="dashboard-header">
 
             <div>
 
-                <span class="novelty-label">
-                    CONTEXT-AWARE REASONING
-                </span>
+                <h1>Legal Document Analysis</h1>
 
-                <h2>
-                     Potential Issues
-                </h2>
+                <p id="documentName">
+                    Document
+                </p>
 
             </div>
+
+
+            <a href="index.html" class="btn btn-outline-primary">
+                Analyze Another Document
+            </a>
 
         </div>
 
 
-        <p class="section-description">
+        <!-- ================= DASHBOARD TABS ================= -->
 
-            The system reviews important clauses against
-            relevant legal information and identifies areas
-            that may require further verification.
+        <div class="dashboard-tabs">
 
-        </p>
+            <button class="dashboard-tab active" data-tab="overview">
+                Overview
+            </button>
 
+            <button class="dashboard-tab" data-tab="rights">
+                Rights & Duties
+            </button>
 
-        <div id="conflictsContainer">
+            <button class="dashboard-tab" data-tab="conflicts">
+                Potential Issues
+            </button>
 
-            <div class="empty-message">
-                No potential conflicts detected.
-            </div>
+            <button class="dashboard-tab" data-tab="risk">
+                Risk & Actions
+            </button>
 
-        </div>
+            <button class="dashboard-tab" data-tab="evidence">
+                Legal Evidence
+            </button>
 
-    </section>
+            <button class="dashboard-tab" data-tab="explanation">
+                Explanation
+            </button>
 
-
-    <!-- ===================================================== -->
-    <!-- RISK ASSESSMENT                                      -->
-    <!-- ===================================================== -->
-
-    <section
-    class="dashboard-card novelty-card tab-content"
-    data-tab-content="risk"
-    >
-
-        <div class="risk-header">
-
-            <div>
-
-                <span class="novelty-label">
-                    CONTEXT-AWARE RISK ANALYSIS
-                </span>
-
-                <h2>
-                     Risk Assessment
-                </h2>
-
-            </div>
-
-
-            <div
-                id="riskLevel"
-                class="risk-badge"
-            >
-                CALCULATING
-            </div>
-
-        </div>
-
-
-        <div
-            id="riskExplanation"
-            class="result-box"
-        >
-            Risk factors are being analyzed.
-        </div>
-
-
-        <h3 class="sub-heading">
-            Risk Factors
-        </h3>
-
-
-        <div id="riskFactorsContainer">
-
-            <p class="empty-message">
-                No risk factors available.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- POSSIBLE ACTIONS                                     -->
-    <!-- ===================================================== -->
-
-   <section
-    class="dashboard-card novelty-card tab-content"
-    data-tab-content="risk"
-    >
-
-        <span class="novelty-label">
-            EVIDENCE-BACKED GUIDANCE
-        </span>
-
-        <h2>
-            Possible Next Actions
-        </h2>
-
-
-        <p class="section-description">
-
-            These are possible information-based next steps
-            derived from the identified document context,
-            legal evidence and detected issues.
-
-        </p>
-
-
-        <div id="actionsContainer">
-
-            <p class="empty-message">
-                No actions available yet.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- LEGAL EVIDENCE                                      -->
-    <!-- ===================================================== -->
-
-    <section
-    class="dashboard-card tab-content"
-    data-tab-content="evidence"
-    >
-
-        <h2>⚖ Supporting Legal Evidence</h2>
-
-
-        <p class="section-description">
-
-            Important findings should be traceable to the
-            document clauses and retrieved legal sources
-            used during analysis.
-
-        </p>
-
-
-        <div id="evidenceContainer">
-
-            <p class="empty-message">
-                No supporting evidence available.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- EXPLAINABILITY                                      -->
-    <!-- ===================================================== -->
-
-    <section
-    class="dashboard-card novelty-card tab-content"
-    data-tab-content="explanation"
-    >
-
-        <span class="novelty-label">
-            EXPLAINABLE REASONING
-        </span>
-
-        <h2>
-             Why Did the System Reach This Finding?
-        </h2>
-
-
-        <div id="explanationContainer">
-
-            <div class="reasoning-step">
-
-                <div class="step-number">
-                    1
-                </div>
-
-                <div>
-
-                    <strong>
-                        Document Evidence
-                    </strong>
-
-                    <p>
-                        Extracted facts and clauses from
-                        the uploaded document.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="reasoning-step">
-
-                <div class="step-number">
-                    2
-                </div>
-
-                <div>
-
-                    <strong>
-                        Legal Evidence
-                    </strong>
-
-                    <p>
-                        Relevant legal provisions retrieved
-                        using semantic similarity.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="reasoning-step">
-
-                <div class="step-number">
-                    3
-                </div>
-
-                <div>
-
-                    <strong>
-                        Knowledge Graph Relationship
-                    </strong>
-
-                    <p>
-                        Relationships between the document
-                        facts and legal concepts are examined.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="reasoning-step">
-
-                <div class="step-number">
-                    4
-                </div>
-
-                <div>
-
-                    <strong>
-                        Context-Aware Reasoning
-                    </strong>
-
-                    <p>
-                        The system evaluates applicable
-                        conditions, conflicts and risk factors.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="reasoning-step">
-
-                <div class="step-number">
-                    5
-                </div>
-
-                <div>
-
-                    <strong>
-                        Explainable Finding
-                    </strong>
-
-                    <p>
-                        The result is presented together
-                        with its supporting evidence.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ===================================================== -->
-    <!-- QUESTION ANSWERING                                  -->
-    <!-- ===================================================== -->
-
-   <section
-    class="dashboard-card question-card tab-content"
-    data-tab-content="questions"
-    >
-
-        <h2>Ask About Your Document</h2>
-
-        <p class="section-description">
-
-            Ask questions about the uploaded document.
-            Answers will be grounded in the document and
-            relevant legal evidence.
-
-        </p>
-
-
-        <div class="question-input-row">
-
-            <input
-                type="text"
-                id="questionInput"
-                class="form-control"
-                placeholder="Example: What is my notice period?"
-            >
-
-
-            <button
-                id="askButton"
-                class="btn ask-btn"
-            >
-                Ask
+            <button class="dashboard-tab" data-tab="questions">
+                Ask Question
             </button>
 
         </div>
 
 
-        <div
-            id="answerContainer"
-            class="answer-box"
-        >
+        <!-- ================= DOCUMENT INFORMATION ================= -->
 
-            Your answer will appear here.
+        <section class="dashboard-card tab-content active-tab" data-tab-content="overview">
+
+
+            <h2>Document Information</h2>
+
+            <div class="info-grid">
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Document Type
+                    </span>
+
+                    <strong id="documentType">
+                        Detecting...
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Analysis Status
+                    </span>
+
+                    <strong id="analysisStatus">
+                        Processing
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Entities Identified
+                    </span>
+
+                    <strong id="entityCount">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <span class="info-label">
+                        Clauses Identified
+                    </span>
+
+                    <strong id="clauseCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= SUMMARY ================= -->
+
+        <section class="dashboard-card tab-content active-tab" data-tab-content="overview">
+
+            <h2> Simplified Summary</h2>
+
+            <div id="summary" class="result-box">
+                Analyzing document...
+            </div>
+
+        </section>
+
+
+        <!-- ================= RIGHTS + OBLIGATIONS ================= -->
+
+        <div class="dashboard-row tab-content" data-tab-content="rights">
+
+            <!-- RIGHTS -->
+
+            <section class="dashboard-card half-card">
+
+                <h2> Your Rights</h2>
+
+                <div id="rightsContainer">
+
+                    <p class="empty-message">
+                        No rights identified yet.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- OBLIGATIONS -->
+
+            <section class="dashboard-card half-card">
+
+                <h2>⚠ Your Obligations</h2>
+
+                <div id="obligationsContainer">
+
+                    <p class="empty-message">
+                        No obligations identified yet.
+                    </p>
+
+                </div>
+
+            </section>
 
         </div>
 
-    </section>
+
+        <!-- ================= DEADLINES + PENALTIES ================= -->
+
+        <div class="dashboard-row tab-content" data-tab-content="rights">
 
 
-    <!-- ================= DISCLAIMER ================= -->
+            <section class="dashboard-card half-card">
 
-    <div class="dashboard-disclaimer">
+                <h2>Important Deadlines</h2>
 
-        <strong>Important:</strong>
+                <div id="deadlinesContainer">
 
-        Law2Life AI provides general legal information
-        and document analysis. It does not replace advice
-        from a qualified legal professional.
+                    <p class="empty-message">
+                        No deadlines identified.
+                    </p>
 
-    </div>
+                </div>
+
+            </section>
 
 
-</main>
+            <section class="dashboard-card half-card">
+
+                <h2>⚠ Penalties / Consequences</h2>
+
+                <div id="penaltiesContainer">
+
+                    <p class="empty-message">
+                        No penalties identified.
+                    </p>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <!-- ===================================================== -->
+        <!-- CORE NOVELTY: CONFLICT DETECTION                      -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card novelty-card tab-content" data-tab-content="conflicts">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="novelty-label">
+                        CONTEXT-AWARE REASONING
+                    </span>
+
+                    <h2>
+                        Potential Issues
+                    </h2>
+
+                </div>
+
+            </div>
 
 
-<script src="js/dashboard.js"></script>
+            <p class="section-description">
+
+                The system reviews important clauses against
+                relevant legal information and identifies areas
+                that may require further verification.
+
+            </p>
+
+
+            <div id="conflictsContainer">
+
+                <div class="empty-message">
+                    No potential conflicts detected.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- RISK ASSESSMENT                                      -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card novelty-card tab-content" data-tab-content="risk">
+
+            <div class="risk-header">
+
+                <div>
+
+                    <span class="novelty-label">
+                        CONTEXT-AWARE RISK ANALYSIS
+                    </span>
+
+                    <h2>
+                        Risk Assessment
+                    </h2>
+
+                </div>
+
+
+                <div id="riskLevel" class="risk-badge">
+                    CALCULATING
+                </div>
+
+            </div>
+
+
+            <div id="riskExplanation" class="result-box">
+                Risk factors are being analyzed.
+            </div>
+
+
+            <h3 class="sub-heading">
+                Risk Factors
+            </h3>
+
+
+            <div id="riskFactorsContainer">
+
+                <p class="empty-message">
+                    No risk factors available.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- POSSIBLE ACTIONS                                     -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card novelty-card tab-content" data-tab-content="risk">
+
+            <span class="novelty-label">
+                EVIDENCE-BACKED GUIDANCE
+            </span>
+
+            <h2>
+                Possible Next Actions
+            </h2>
+
+
+            <p class="section-description">
+
+                These are possible information-based next steps
+                derived from the identified document context,
+                legal evidence and detected issues.
+
+            </p>
+
+
+            <div id="actionsContainer">
+
+                <p class="empty-message">
+                    No actions available yet.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- LEGAL EVIDENCE                                      -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card tab-content" data-tab-content="evidence">
+
+            <h2> Supporting Legal Evidence</h2>
+
+
+            <p class="section-description">
+
+                Important findings should be traceable to the
+                document clauses and retrieved legal sources
+                used during analysis.
+
+            </p>
+
+
+            <div id="evidenceContainer">
+
+                <p class="empty-message">
+                    No supporting evidence available.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- EXPLAINABILITY                                      -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card novelty-card tab-content" data-tab-content="explanation">
+
+            <span class="novelty-label">
+                EXPLAINABLE REASONING
+            </span>
+
+            <h2>
+                Why Did the System Reach This Finding?
+            </h2>
+
+
+            <div id="explanationContainer">
+
+                <div class="reasoning-step">
+
+                    <div class="step-number">
+                        1
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Document Evidence
+                        </strong>
+
+                        <p>
+                            Extracted facts and clauses from
+                            the uploaded document.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reasoning-step">
+
+                    <div class="step-number">
+                        2
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Legal Evidence
+                        </strong>
+
+                        <p>
+                            Relevant legal provisions retrieved
+                            using semantic similarity.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reasoning-step">
+
+                    <div class="step-number">
+                        3
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Knowledge Graph Relationship
+                        </strong>
+
+                        <p>
+                            Relationships between the document
+                            facts and legal concepts are examined.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reasoning-step">
+
+                    <div class="step-number">
+                        4
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Context-Aware Reasoning
+                        </strong>
+
+                        <p>
+                            The system evaluates applicable
+                            conditions, conflicts and risk factors.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="reasoning-step">
+
+                    <div class="step-number">
+                        5
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Explainable Finding
+                        </strong>
+
+                        <p>
+                            The result is presented together
+                            with its supporting evidence.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================================== -->
+        <!-- QUESTION ANSWERING                                  -->
+        <!-- ===================================================== -->
+
+        <section class="dashboard-card question-card tab-content" data-tab-content="questions">
+
+            <h2>Ask About Your Document</h2>
+
+            <p class="section-description">
+
+                Ask questions about the uploaded document.
+                Answers will be grounded in the document and
+                relevant legal evidence.
+
+            </p>
+
+
+            <div class="question-input-row">
+
+                <input type="text" id="questionInput" class="form-control"
+                    placeholder="Example: What is my notice period?">
+
+
+                <button id="askButton" class="btn ask-btn">
+                    Ask
+                </button>
+
+            </div>
+
+
+            <div id="answerContainer" class="answer-box">
+
+                Your answer will appear here.
+
+            </div>
+
+        </section>
+
+
+
+    </main>
+
+
+    <script src="js/dashboard.js"></script>
 
 </body>
 

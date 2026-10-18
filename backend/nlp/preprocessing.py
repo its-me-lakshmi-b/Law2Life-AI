@@ -91,14 +91,9 @@ def preprocess_legal_text(text):
     # ---------------------------------------------------------
     # 4. Restore numbered legal section boundaries
     #
-    # IMPORTANT:
-    # Only numbers 1-10 are considered section numbers.
-    #
-    # This prevents:
-    #
-    # 2026. Salary
-    #
-    # from being treated as a new section.
+    # Prevents years like '2026. Salary' from being treated
+    # as section numbers, while supporting clauses across
+    # employment, rental, service, and commercial agreements.
     # ---------------------------------------------------------
 
     legal_headings = (
@@ -108,14 +103,31 @@ def preprocess_legal_text(text):
         r"Leave|"
         r"Confidentiality|"
         r"Notice and Termination|"
+        r"Termination|"
+        r"Notice Period|"
         r"Company Property|"
         r"Dispute Resolution|"
         r"Important Dates and Conditions|"
-        r"Acknowledgement"
+        r"Acknowledgement|"
+        r"Rent|"
+        r"Monthly Rent|"
+        r"Security Deposit|"
+        r"Deposit|"
+        r"Lease Period|"
+        r"Term of Lease|"
+        r"Premises|"
+        r"Maintenance and Repairs|"
+        r"Utilities|"
+        r"Scope of Services|"
+        r"Payment Terms|"
+        r"Governing Law|"
+        r"Indemnification|"
+        r"Indemnity|"
+        r"Severability"
     )
 
     section_boundary_pattern = (
-        rf"\s+(?=(?:[1-9]|10)\.\s+(?:{legal_headings})\b)"
+        rf"\s+(?=(?:[1-9]|[1-4][0-9]|50)\.\s+(?:{legal_headings})\b)"
     )
 
     text = re.sub(

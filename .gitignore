@@ -4,3 +4,15 @@ __pycache__/
 uploaded_documents/
 .env
 .pytest_cache/
+data/*.db
+data/*.sqlite
+
+
+# Additional local and sensitive files
+.venv/
+.env.*
+!.env.example
+*.sqlite
+*.sqlite3
+*.db
+.DS_Store

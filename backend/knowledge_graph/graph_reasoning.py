@@ -1,3 +1,10 @@
+import sys
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if BASE_DIR not in sys.path:
+    sys.path.insert(0, BASE_DIR)
+
 from backend.knowledge_graph.graph_queries import (
     get_related_nodes,
     find_path
@@ -17,7 +24,8 @@ CONCEPT_KEYWORDS = {
     "leave": [
         "leave",
         "vacation",
-        "absence"
+        "absence",
+        "maternity"
     ],
 
     "salary": [
@@ -28,20 +36,49 @@ CONCEPT_KEYWORDS = {
         "compensation"
     ],
 
+    "rent": [
+        "rent",
+        "monthly rent",
+        "lease",
+        "tenant",
+        "landlord"
+    ],
+
+    "security_deposit": [
+        "security deposit",
+        "deposit",
+        "refund of deposit"
+    ],
+
+    "working_hours": [
+        "working hours",
+        "normal working schedule",
+        "hours per week"
+    ],
+
     "confidentiality": [
         "confidential",
         "confidentiality",
-        "non-public information"
+        "non-public information",
+        "restraint of trade",
+        "non-compete"
+    ],
+
+    "dispute_resolution": [
+        "dispute",
+        "arbitration",
+        "jurisdiction",
+        "governing law"
     ],
 
     "employment": [
         "employment",
         "employee",
         "employer",
-        "duties",
-        "working hours"
+        "duties"
     ]
 }
+
 
 
 def identify_concepts(clause_text):
@@ -136,11 +173,24 @@ def reason_about_clause(clause_text):
         elif concept == "salary":
             graph_concept = "Salary"
 
+        elif concept == "rent":
+            graph_concept = "Rent"
+
+        elif concept == "security_deposit":
+            graph_concept = "Security Deposit"
+
+        elif concept == "working_hours":
+            graph_concept = "Working Hours"
+
         elif concept == "confidentiality":
             graph_concept = "Confidentiality"
 
+        elif concept == "dispute_resolution":
+            graph_concept = "Dispute Resolution"
+
         elif concept == "employment":
             graph_concept = "Employment Terms"
+
 
         analysis = analyze_clause_context(
             clause_text,
@@ -220,7 +270,8 @@ def reason_about_clause(clause_text):
     return {
         "clause": clause_text,
         "detected_concepts": concepts,
-        "graph_reasoning": results
+        "graph_reasoning": results,
+        "results": results
     }
 
 
@@ -340,9 +391,10 @@ if __name__ == "__main__":
 
                 print(
                     f"  - "
-                    f"{node['relation']} → "
+                    f"{node['relation']} -> "
                     f"{node['node']}"
                 )
+
 
             print("Reasoning:")
 

@@ -30,15 +30,10 @@ async def upload_document(
     file: UploadFile = File(...)
 ):
 
-    if not file.filename:
-        raise HTTPException(
-            status_code=400,
-            detail="No file selected."
-        )
-
-    extension = os.path.splitext(
-        file.filename
-    )[1].lower()
+    # Sanitize filename to prevent directory traversal
+    safe_original_name = os.path.basename(file.filename)
+    
+    extension = os.path.splitext(safe_original_name)[1].lower()
 
     if extension not in ALLOWED_EXTENSIONS:
         raise HTTPException(
@@ -49,17 +44,27 @@ async def upload_document(
             )
         )
 
-    unique_name = str(uuid.uuid4()) + extension
-
-    file_path = os.path.join(
-        UPLOAD_DIR,
-        unique_name
-    )
-
+    # Maximum file size 15 MB
+    MAX_FILE_SIZE = 15 * 1024 * 1024
     contents = await file.read()
+    if len(contents) > MAX_FILE_SIZE:
+        raise HTTPException(
+            status_code=413,
+            detail=f"File exceeds maximum allowed size of 15 MB."
+        )
+
+    if len(contents) == 0:
+        raise HTTPException(
+            status_code=400,
+            detail="The uploaded file is empty."
+        )
+
+    unique_name = f"{uuid.uuid4()}{extension}"
+    file_path = os.path.join(UPLOAD_DIR, unique_name)
 
     with open(file_path, "wb") as buffer:
         buffer.write(contents)
+
 
     try:
 
@@ -106,10 +111,24 @@ async def upload_document(
         extracted_text
     )
 
+    doc_id = str(uuid.uuid4())
+    try:
+        from backend.database.models import save_uploaded_document
+        doc_id = save_uploaded_document(
+            original_filename=safe_original_name,
+            stored_filepath=file_path,
+            file_type=extension,
+            file_size_bytes=len(contents),
+            document_type=classification.get("document_type", "unknown")
+        )
+    except Exception:
+        pass
+
     return {
         "status": "success",
         "message": "Document uploaded and analyzed successfully.",
-        "document_name": file.filename,
+        "document_id": doc_id,
+        "document_name": safe_original_name,
         "stored_file": file_path,
         "file_type": extension,
         "extracted_text": extracted_text,

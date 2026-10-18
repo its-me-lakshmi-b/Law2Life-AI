@@ -105,10 +105,9 @@ if __name__ == "__main__":
     )
 
     for item in related:
-
         print(
             f"{item['direction']}: "
-            f"{item['relation']} → "
+            f"{item['relation']} -> "
             f"{item['node']}"
         )
 
@@ -120,11 +119,6 @@ if __name__ == "__main__":
     )
 
     if path:
-
-        print(
-            " → ".join(path)
-        )
-
+        print(" -> ".join(path))
     else:
-
-        print("No path found.")
+        print("No path found.")

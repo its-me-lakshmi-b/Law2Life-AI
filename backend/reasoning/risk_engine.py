@@ -16,12 +16,29 @@ def calculate_risk(
     valid or invalid.
     """
 
-    conflicts = conflicts or []
-    clauses = clauses or []
-    legal_evidence = legal_evidence or []
+    conflicts = conflicts if conflicts is not None else []
+    legal_evidence = legal_evidence if legal_evidence is not None else []
+
+    # Handle clauses whether passed as dict or list of dicts/strings
+    if clauses is None:
+        clauses = {}
+    elif isinstance(clauses, list):
+        clause_dict = {}
+        for item in clauses:
+            if isinstance(item, dict):
+                cat = item.get("category", "general")
+                txt = item.get("text", "")
+                clause_dict.setdefault(cat, []).append(txt)
+            elif isinstance(item, str):
+                clause_dict.setdefault("general", []).append(item)
+        clauses = clause_dict
+    elif not isinstance(clauses, dict):
+        clauses = {}
 
     risk_score = 0
     risk_factors = []
+
+
 
     # ========================================================
     # 1. POTENTIAL ISSUES
@@ -257,12 +274,36 @@ def calculate_risk(
     # 10. RETURN RISK RESULT
     # ========================================================
 
+    # Build structured factor objects for the dashboard UI
+    factors = []
+    for factor_str in risk_factors:
+        pts = 0
+        if "high-confidence" in factor_str:
+            pts = 25
+        elif "potential issue" in factor_str:
+            pts = 15
+        elif "deadline" in factor_str:
+            pts = 5
+        elif "termination" in factor_str:
+            pts = 10
+        elif "confidentiality" in factor_str or "leave" in factor_str:
+            pts = 5
+        factors.append({
+            "factor": factor_str.split(".")[0],
+            "reason": factor_str,
+            "points": pts
+        })
+
     return {
         "risk_score": risk_score,
+        "score": risk_score,
         "risk_level": risk_level,
+        "level": risk_level,
         "risk_factors": risk_factors,
+        "factors": factors,
         "explanation": explanation
     }
+
 
 
 # ============================================================

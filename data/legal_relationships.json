@@ -25,6 +25,51 @@
         "target": "Confidentiality"
     },
     {
+        "source": "Employment Agreement",
+        "relation": "HAS",
+        "target": "Working Hours"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "GOVERNED_BY",
+        "target": "Indian Contract Act, 1872"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "GOVERNED_BY",
+        "target": "Payment of Wages Act, 1936"
+    },
+    {
+        "source": "Employment Agreement",
+        "relation": "GOVERNED_BY",
+        "target": "Industrial Disputes Act, 1947"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "HAS",
+        "target": "Rent"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "HAS",
+        "target": "Security Deposit"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "HAS",
+        "target": "Lease Period"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "HAS",
+        "target": "Termination"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "GOVERNED_BY",
+        "target": "Transfer of Property Act, 1882"
+    },
+    {
         "source": "Employment Terms",
         "relation": "GOVERNS",
         "target": "Employee"
@@ -35,9 +80,29 @@
         "target": "Employer"
     },
     {
+        "source": "Rental Agreement",
+        "relation": "GOVERNS",
+        "target": "Tenant"
+    },
+    {
+        "source": "Rental Agreement",
+        "relation": "GOVERNS",
+        "target": "Landlord"
+    },
+    {
         "source": "Salary",
         "relation": "PAID_TO",
         "target": "Employee"
+    },
+    {
+        "source": "Salary",
+        "relation": "SUBJECT_TO",
+        "target": "Payment of Wages Act, 1936"
+    },
+    {
+        "source": "Salary",
+        "relation": "REQUIRES_PAYMENT_BY",
+        "target": "Seventh Day of Month"
     },
     {
         "source": "Leave",
@@ -50,6 +115,26 @@
         "target": "Leave Notice Period"
     },
     {
+        "source": "Leave",
+        "relation": "INCLUDES",
+        "target": "Maternity Benefit"
+    },
+    {
+        "source": "Maternity Benefit",
+        "relation": "MANDATED_BY",
+        "target": "Maternity Benefit Act, 1961"
+    },
+    {
+        "source": "Working Hours",
+        "relation": "LIMITED_BY",
+        "target": "Factories Act, 1948"
+    },
+    {
+        "source": "Working Hours",
+        "relation": "MAX_WEEKLY_HOURS",
+        "target": "48 Hours"
+    },
+    {
         "source": "Termination",
         "relation": "REQUIRES",
         "target": "Notice Period"
@@ -60,6 +145,26 @@
         "target": "Applicable Law"
     },
     {
+        "source": "Termination",
+        "relation": "SUBJECT_TO",
+        "target": "Industrial Disputes Act, 1947"
+    },
+    {
+        "source": "Termination",
+        "relation": "SUBJECT_TO",
+        "target": "Transfer of Property Act, 1882"
+    },
+    {
+        "source": "Notice Period",
+        "relation": "STATUTORY_MINIMUM",
+        "target": "One Month (Workman)"
+    },
+    {
+        "source": "Notice Period",
+        "relation": "STATUTORY_BASELINE",
+        "target": "15 Days (Lease)"
+    },
+    {
         "source": "Confidentiality",
         "relation": "PROTECTS",
         "target": "Confidential Information"
@@ -68,5 +173,40 @@
         "source": "Confidentiality",
         "relation": "CONTINUES_AFTER",
         "target": "Employment"
+    },
+    {
+        "source": "Confidentiality",
+        "relation": "LIMITED_BY",
+        "target": "Section 27 Indian Contract Act"
+    },
+    {
+        "source": "Section 27 Indian Contract Act",
+        "relation": "PROHIBITS",
+        "target": "Restraint of Trade"
+    },
+    {
+        "source": "Penalties",
+        "relation": "SUBJECT_TO",
+        "target": "Section 74 Indian Contract Act"
+    },
+    {
+        "source": "Section 74 Indian Contract Act",
+        "relation": "RESTRICTS",
+        "target": "Liquidated Damages to Reasonable Loss"
+    },
+    {
+        "source": "Dispute Resolution",
+        "relation": "RESOLVES",
+        "target": "Contractual Disputes"
+    },
+    {
+        "source": "Dispute Resolution",
+        "relation": "SUBJECT_TO",
+        "target": "Arbitration and Conciliation Act"
+    },
+    {
+        "source": "Dispute Resolution",
+        "relation": "SUBJECT_TO",
+        "target": "Civil Courts Jurisdiction"
     }
 ]

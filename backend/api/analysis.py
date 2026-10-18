@@ -26,12 +26,32 @@ from backend.reasoning.risk_engine import (
     calculate_risk
 )
 
+from backend.nlp.legal_classifier import (
+    classify_document
+)
+
+from backend.reasoning.action_recommender import (
+    recommend_actions
+)
+
+from backend.explainability.explanation_engine import (
+    generate_explanation
+)
+
+from backend.database.models import (
+    save_analysis_record
+)
+
+
+
+from typing import Optional
 
 router = APIRouter()
 
 
 class AnalysisRequest(BaseModel):
     text: str
+    document_id: Optional[str] = None
 
 
 # ============================================================
@@ -295,16 +315,24 @@ async def analyze_document(
     # 4. DOCUMENT TYPE
     # ========================================================
 
-    document_type = "unknown"
+    # ========================================================
+    # 4. DOCUMENT TYPE & CLASSIFICATION
+    # ========================================================
 
-    if (
-        legal_facts.get("employee")
-        or legal_facts.get("employer")
-        or legal_facts.get("salary")
-        or legal_facts.get("notice_period")
-    ):
+    classification = classify_document(text)
+    document_type = classification.get("document_type", "unknown")
 
-        document_type = "employment_agreement"
+    # Contextual fallback if classifier is uncertain but strong facts exist
+    if document_type == "unknown":
+        if (
+            legal_facts.get("employee")
+            or legal_facts.get("employer")
+            or legal_facts.get("salary")
+            or legal_facts.get("notice_period")
+        ):
+            document_type = "employment_agreement"
+        elif legal_facts.get("tenant") or legal_facts.get("landlord") or legal_facts.get("rent"):
+            document_type = "rental_agreement"
 
     # ========================================================
     # 5. SIMPLIFIED SUMMARY
@@ -320,16 +348,26 @@ async def analyze_document(
     # 6. PREPARE CLAUSE LIST
     # ========================================================
 
+    # Deduplicate clause_list by exact text while preserving categories
     clause_list = []
+    seen_clauses = {}
 
     for category, items in clauses.items():
-
         for item in items:
+            text_clean = item.strip()
+            if not text_clean:
+                continue
+            if text_clean not in seen_clauses:
+                seen_clauses[text_clean] = {
+                    "category": category,
+                    "categories": [category],
+                    "text": text_clean
+                }
+            else:
+                if category not in seen_clauses[text_clean]["categories"]:
+                    seen_clauses[text_clean]["categories"].append(category)
 
-            clause_list.append({
-                "category": category,
-                "text": item
-            })
+    clause_list = list(seen_clauses.values())
 
     # ========================================================
     # 7. LEGAL PROVISION RETRIEVAL
@@ -350,6 +388,7 @@ async def analyze_document(
             legal_evidence.append({
                 "clause": clause["text"],
                 "category": clause["category"],
+                "categories": clause.get("categories", [clause["category"]]),
                 "provisions": retrieved_provisions
             })
 
@@ -381,14 +420,104 @@ async def analyze_document(
     )
 
     # ========================================================
-    # 11. RETURN COMPLETE ANALYSIS
+    # 11. ACTION RECOMMENDATIONS
+    # ========================================================
+
+    actions = recommend_actions(
+        conflicts=conflicts,
+        clauses=clauses,
+        legal_facts=legal_facts,
+        legal_evidence=legal_evidence,
+        document_type=document_type
+    )
+
+    # ========================================================
+    # 12. EXPLAINABILITY ENGINE
+    # ========================================================
+
+    explanation = generate_explanation(
+        document_type=document_type,
+        legal_facts=legal_facts,
+        clauses=clauses,
+        legal_evidence=legal_evidence,
+        graph_reasoning=graph_reasoning,
+        conflicts=conflicts,
+        risk_assessment=risk_assessment,
+        actions=actions
+    )
+
+    # ========================================================
+    # 13. PERSISTENCE RECORDING
+    # ========================================================
+
+    try:
+        save_analysis_record(
+            document_id=request.document_id,
+            document_type=document_type,
+            summary=summary,
+            risk_score=risk_assessment.get("risk_score", 0),
+            risk_level=risk_assessment.get("risk_level", "Low"),
+            conflicts_count=len(conflicts),
+            clauses_count=len(clause_list)
+        )
+    except Exception:
+        # Non-blocking persistence
+        pass
+
+    # Consolidate legal evidence by stable statutory provision identity
+    evidence_by_provision = {}
+    for item in legal_evidence:
+        clause_str = item.get("clause", "")
+        for prov in item.get("provisions", []):
+            pid = prov.get("provision_id", prov.get("id", ""))
+            src = prov.get("source", {})
+            if not pid:
+                pid = f"{prov.get('act', src.get('act', ''))}_{prov.get('section', src.get('section', ''))}"
+
+            if pid not in evidence_by_provision:
+                evidence_by_provision[pid] = {
+                    "provision_id": pid,
+                    "title": prov.get("title", "Legal Provision"),
+                    "description": prov.get("description", ""),
+                    "act": prov.get("act", src.get("act", src.get("name", "Indian Statute"))),
+                    "section": prov.get("section", src.get("section", "")),
+                    "citation": prov.get("citation", src.get("citation", "")),
+                    "source": src.get("name", prov.get("act", "Indian Statute")),
+                    "url": src.get("url", ""),
+                    "source_organization": src.get("source_organization", "Government of India"),
+                    "verification_status": prov.get("verification_status", src.get("verification_status", "verified_statute")),
+                    "conditions": prov.get("conditions", []),
+                    "exceptions": prov.get("exceptions", []),
+                    "clause": clause_str,
+                    "supported_clauses": [clause_str] if clause_str else [],
+                    "matched_keywords": list(prov.get("matched_keywords", [])),
+                    "score": prov.get("score", 0),
+                    "relevance_reason": prov.get("relevance_reason", "")
+                }
+            else:
+                if clause_str and clause_str not in evidence_by_provision[pid]["supported_clauses"]:
+                    evidence_by_provision[pid]["supported_clauses"].append(clause_str)
+                if prov.get("score", 0) > evidence_by_provision[pid]["score"]:
+                    evidence_by_provision[pid]["score"] = prov.get("score", 0)
+                for kw in prov.get("matched_keywords", []):
+                    if kw not in evidence_by_provision[pid]["matched_keywords"]:
+                        evidence_by_provision[pid]["matched_keywords"].append(kw)
+
+    consolidated_evidence = list(evidence_by_provision.values())
+
+    # ========================================================
+    # 14. RETURN COMPLETE ANALYSIS
     # ========================================================
 
     return {
 
         "status": "success",
 
+        "document_id": request.document_id,
+
         "document_type": document_type,
+
+        "classification": classification,
 
         "summary": summary,
 
@@ -441,59 +570,21 @@ async def analyze_document(
         "legal_evidence": legal_evidence,
 
         # Internal reasoning.
-        # This remains available to the backend but is
-        # not displayed as a Knowledge Graph to the user.
         "graph_reasoning": graph_reasoning,
 
         # Potential issues.
         "conflicts": conflicts,
 
-        # New risk assessment.
+        # Risk assessment (dual keys for dashboard.js).
         "risk_assessment": risk_assessment,
+        "risk": risk_assessment,
 
-        # Flattened evidence for the dashboard.
-        "evidence": [
+        # Evidence-grounded action recommendations.
+        "actions": actions,
 
-            {
-                "title": provision.get(
-                    "title",
-                    "Legal Provision"
-                ),
+        # Explainability trail (finding-specific + 10-step process).
+        "explanation": explanation,
 
-                "description": provision.get(
-                    "description",
-                    ""
-                ),
-
-                "source": provision.get(
-                    "source",
-                    {}
-                ).get(
-                    "name",
-                    "Source not specified"
-                ),
-
-                "clause": item.get(
-                    "clause",
-                    ""
-                ),
-
-                "matched_keywords": provision.get(
-                    "matched_keywords",
-                    []
-                ),
-
-                "score": provision.get(
-                    "score",
-                    0
-                )
-            }
-
-            for item in legal_evidence
-
-            for provision in item.get(
-                "provisions",
-                []
-            )
-        ]
-    }
+        # Consolidated statutory evidence for dashboard.
+        "evidence": consolidated_evidence
+    }

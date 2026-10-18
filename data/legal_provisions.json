@@ -1,62 +1,85 @@
 [
     {
-        "provision_id": "EMP_001",
-        "title": "Employment Terms and Conditions",
-        "topic": "employment",
-        "document_types": [
-            "employment_agreement"
-        ],
-        "keywords": [
-            "employee",
-            "employer",
-            "employment",
-            "salary",
-            "working hours",
-            "leave",
-            "termination"
-        ],
-        "description": "Employment agreements may contain terms governing the employment relationship, including duties, compensation, working arrangements, leave and termination.",
-        "conditions": [
-            "The provision is relevant when the uploaded document concerns an employment relationship."
-        ],
-        "exceptions": [],
-        "source": {
-            "name": "Authoritative legal source to be linked",
-            "url": "",
-            "jurisdiction": "India"
-        }
-    },
-    {
-        "provision_id": "EMP_002",
-        "title": "Termination and Notice",
-        "topic": "termination",
+        "provision_id": "IND_CONT_S27",
+        "title": "Agreement in Restraint of Trade Void",
+        "topic": "confidentiality",
         "document_types": [
             "employment_agreement",
-            "termination_letter"
+            "service_agreement",
+            "property_agreement"
         ],
         "keywords": [
-            "termination",
-            "notice",
-            "notice period",
-            "terminate",
-            "termination notice"
+            "restraint of trade",
+            "non-compete",
+            "competitor",
+            "post-employment",
+            "working for competitor",
+            "restricting trade",
+            "confidentiality"
         ],
-        "description": "Employment documents may specify conditions relating to termination and notice.",
+        "description": "Under Section 27 of the Indian Contract Act, 1872, every agreement by which anyone is restrained from exercising a lawful profession, trade or business of any kind, is to that extent void, subject to the statutory exception regarding the sale of goodwill of a business.",
         "conditions": [
-            "A termination or notice clause is present in the document."
+            "Applies when an agreement restricts an employee or contractor from practicing their trade, profession, or taking up lawful employment with other businesses post-termination."
         ],
         "exceptions": [
-            "The applicable rule may depend on the employment relationship, applicable law, contract terms and circumstances."
+            "Exception 1: One who sells the goodwill of a business may agree with the buyer to refrain from carrying on a similar business within specified local limits, if reasonable.",
+            "Reasonable non-disclosure of genuine trade secrets and proprietary technical information during or post employment is generally enforceable if not an indirect restraint of trade."
         ],
         "source": {
-            "name": "Authoritative legal source to be linked",
-            "url": "",
-            "jurisdiction": "India"
+            "name": "The Indian Contract Act, 1872 (Act No. 9 of 1872)",
+            "act": "Indian Contract Act, 1872",
+            "section": "Section 27",
+            "citation": "Act No. 9 of 1872, Section 27",
+            "jurisdiction": "India",
+            "source_organization": "Legislative Department, Ministry of Law and Justice, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2187",
+            "effective_date": "1872-09-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
         }
     },
     {
-        "provision_id": "EMP_003",
-        "title": "Payment of Salary",
+        "provision_id": "IND_CONT_S74",
+        "title": "Compensation for Breach of Contract Where Penalty Stipulated",
+        "topic": "penalties",
+        "document_types": [
+            "employment_agreement",
+            "service_agreement",
+            "rental_agreement",
+            "loan_agreement"
+        ],
+        "keywords": [
+            "penalty",
+            "liquidated damages",
+            "breach of contract",
+            "forfeit",
+            "stipulated amount",
+            "damages",
+            "bond"
+        ],
+        "description": "Under Section 74 of the Indian Contract Act, 1872, when a contract has been broken, if a sum is named in the contract as the amount to be paid in case of such breach, or if the contract contains any other stipulation by way of penalty, the aggrieved party is entitled to receive reasonable compensation not exceeding the amount so named or the penalty stipulated, whether or not actual damage or loss is proved.",
+        "conditions": [
+            "Applies when a contract specifies fixed forfeiture sums, employment bond penalties, or unreasonable penalty clauses for early exit or breach."
+        ],
+        "exceptions": [
+            "The court will award only reasonable compensation determined on merits, not extortionate or in terrorem penalty amounts."
+        ],
+        "source": {
+            "name": "The Indian Contract Act, 1872 (Act No. 9 of 1872)",
+            "act": "Indian Contract Act, 1872",
+            "section": "Section 74",
+            "citation": "Act No. 9 of 1872, Section 74",
+            "jurisdiction": "India",
+            "source_organization": "Legislative Department, Ministry of Law and Justice, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2187",
+            "effective_date": "1872-09-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_PWA_S05",
+        "title": "Time of Payment of Wages",
         "topic": "salary",
         "document_types": [
             "employment_agreement"
@@ -66,22 +89,188 @@
             "wages",
             "monthly salary",
             "payable",
-            "payment"
+            "seventh day",
+            "tenth day",
+            "time of payment",
+            "wage period"
         ],
-        "description": "Employment documents commonly specify compensation and payment terms.",
+        "description": "Under Section 5 of the Payment of Wages Act, 1936, wages of every person employed in any establishment employing less than one thousand persons shall be paid before the expiry of the seventh day, and in any other establishment before the expiry of the tenth day, after the last day of the wage period in respect of which the wages are payable.",
         "conditions": [
-            "The document contains salary or payment terms."
+            "The wage period must not exceed one month.",
+            "Applicable to employed persons earning wages within the statutory threshold."
         ],
-        "exceptions": [],
+        "exceptions": [
+            "Where the employment of any person is terminated by or on behalf of the employer, the wages earned by him shall be paid before the expiry of the second working day from the day on which his employment is terminated."
+        ],
         "source": {
-            "name": "Authoritative legal source to be linked",
-            "url": "",
-            "jurisdiction": "India"
+            "name": "The Payment of Wages Act, 1936 (Act No. 4 of 1936)",
+            "act": "Payment of Wages Act, 1936",
+            "section": "Section 5",
+            "citation": "Act No. 4 of 1936, Section 5",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Labour and Employment, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2367",
+            "effective_date": "1937-03-28",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
         }
     },
     {
-        "provision_id": "EMP_004",
-        "title": "Leave and Leave Conditions",
+        "provision_id": "IND_PWA_S07",
+        "title": "Deductions from Wages Which May Be Made",
+        "topic": "salary",
+        "document_types": [
+            "employment_agreement"
+        ],
+        "keywords": [
+            "deductions",
+            "salary deduction",
+            "unauthorized deduction",
+            "fines",
+            "applicable deductions",
+            "recovery of advances"
+        ],
+        "description": "Under Section 7 of the Payment of Wages Act, 1936, the wages of an employed person shall be paid to him without deductions of any kind except those authorized by or under this Act (such as fines, deductions for absence from duty, damage to or loss of goods expressly entrusted, house-accommodation, income tax, or provident fund).",
+        "conditions": [
+            "Applies to all deductions made from an employee's salary or remuneration."
+        ],
+        "exceptions": [
+            "Total deductions in any wage period shall not exceed 75% in cases where deductions are wholly or partly made for payments to co-operative societies, and 50% in any other case."
+        ],
+        "source": {
+            "name": "The Payment of Wages Act, 1936 (Act No. 4 of 1936)",
+            "act": "Payment of Wages Act, 1936",
+            "section": "Section 7",
+            "citation": "Act No. 4 of 1936, Section 7",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Labour and Employment, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2367",
+            "effective_date": "1937-03-28",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_IDA_S25F",
+        "title": "Conditions Precedent to Retrenchment and Notice",
+        "topic": "termination",
+        "document_types": [
+            "employment_agreement",
+            "termination_letter"
+        ],
+        "keywords": [
+            "termination",
+            "notice",
+            "notice period",
+            "30 days",
+            "one month notice",
+            "retrenchment",
+            "terminate employment",
+            "written notice"
+        ],
+        "description": "Under Section 25F of the Industrial Disputes Act, 1947, no workman employed in any industry who has been in continuous service for not less than one year shall be retrenched until the workman has been given one month's notice in writing indicating the reasons for retrenchment and the period of notice has expired, or the workman has been paid in lieu of such notice, wages for the period of the notice, alongside retrenchment compensation.",
+        "conditions": [
+            "Applicable to workmen with continuous service of not less than 240 days in the preceding twelve months.",
+            "Applies where termination is not a disciplinary punishment inflicted by way of disciplinary action."
+        ],
+        "exceptions": [
+            "Does not apply to voluntary retirement, retirement on reaching age of superannuation, termination on grounds of continued ill-health, or contractual termination under certain non-workman executive categories."
+        ],
+        "source": {
+            "name": "The Industrial Disputes Act, 1947 (Act No. 14 of 1947)",
+            "act": "Industrial Disputes Act, 1947",
+            "section": "Section 25F",
+            "citation": "Act No. 14 of 1947, Section 25F",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Labour and Employment, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/1518",
+            "effective_date": "1947-04-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_TPA_S106",
+        "title": "Duration and Termination of Certain Leases in Absence of Written Contract",
+        "topic": "termination",
+        "document_types": [
+            "rental_agreement",
+            "property_agreement"
+        ],
+        "keywords": [
+            "rental agreement",
+            "lease",
+            "tenant",
+            "landlord",
+            "rent",
+            "notice to quit",
+            "15 days",
+            "termination of lease",
+            "notice period"
+        ],
+        "description": "Under Section 106 of the Transfer of Property Act, 1882, in the absence of a contract or local law or usage to the contrary, a lease of immovable property for purposes other than agriculture or manufacturing shall be deemed to be a lease from month to month, terminable, on the part of either lessor or lessee, by fifteen days' notice expiring with the end of a month of the tenancy.",
+        "conditions": [
+            "Applies to leases of immovable property where express contractual or statutory tenancy conditions are absent or subject to statutory baseline."
+        ],
+        "exceptions": [
+            "Agricultural or manufacturing leases require six months' notice expiring with the end of a year of the tenancy.",
+            "State-specific Rent Control Acts and Model Tenancy regulations provide additional statutory tenant protection."
+        ],
+        "source": {
+            "name": "The Transfer of Property Act, 1882 (Act No. 4 of 1882)",
+            "act": "Transfer of Property Act, 1882",
+            "section": "Section 106",
+            "citation": "Act No. 4 of 1882, Section 106",
+            "jurisdiction": "India",
+            "source_organization": "Legislative Department, Ministry of Law and Justice, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2338",
+            "effective_date": "1882-07-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_TPA_S108",
+        "title": "Rights and Liabilities of Lessor and Lessee",
+        "topic": "obligations",
+        "document_types": [
+            "rental_agreement",
+            "property_agreement"
+        ],
+        "keywords": [
+            "tenant",
+            "landlord",
+            "rent",
+            "security deposit",
+            "premises",
+            "maintenance",
+            "repairs",
+            "quiet enjoyment",
+            "possession"
+        ],
+        "description": "Under Section 108 of the Transfer of Property Act, 1882, the lessor is bound to disclose latent material defects, put the lessee in possession, and ensure quiet enjoyment. The lessee is bound to pay rent at the proper time and place, maintain property in reasonable condition, and restore possession on termination.",
+        "conditions": [
+            "Applies to tenancy and lease agreements across residential and commercial properties."
+        ],
+        "exceptions": [
+            "Subject to specific covenants and terms mutually agreed in the executed lease deed."
+        ],
+        "source": {
+            "name": "The Transfer of Property Act, 1882 (Act No. 4 of 1882)",
+            "act": "Transfer of Property Act, 1882",
+            "section": "Section 108",
+            "citation": "Act No. 4 of 1882, Section 108",
+            "jurisdiction": "India",
+            "source_organization": "Legislative Department, Ministry of Law and Justice, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/2338",
+            "effective_date": "1882-07-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_MBA_S05",
+        "title": "Right to Payment of Maternity Benefit and Leave",
         "topic": "leave",
         "document_types": [
             "employment_agreement"
@@ -89,48 +278,104 @@
         "keywords": [
             "leave",
             "paid leave",
-            "leave request",
-            "absence",
-            "leave policy"
+            "maternity benefit",
+            "maternity leave",
+            "leave entitlement",
+            "absence"
         ],
-        "description": "Employment documents may contain terms governing leave requests and leave conditions.",
+        "description": "Under Section 5 of the Maternity Benefit Act, 1961 (as amended in 2017), every woman shall be entitled to, and her employer shall be liable for, the payment of maternity benefit at the rate of the average daily wage for the period of her actual absence, up to a maximum duration of twenty-six weeks of which not more than eight weeks shall precede the date of expected delivery.",
         "conditions": [
-            "The document contains a leave-related clause."
+            "The woman must have actually worked in an establishment of the employer for a period of not less than eighty days in the twelve months immediately preceding the date of her expected delivery."
         ],
         "exceptions": [
-            "The applicable leave entitlement may depend on the applicable employment law, establishment and circumstances."
+            "For a woman having two or more surviving children, the maximum maternity benefit period is twelve weeks of which not more than six weeks shall precede the expected delivery."
         ],
         "source": {
-            "name": "Authoritative legal source to be linked",
-            "url": "",
-            "jurisdiction": "India"
+            "name": "The Maternity Benefit Act, 1961 (Act No. 53 of 1961)",
+            "act": "Maternity Benefit Act, 1961",
+            "section": "Section 5",
+            "citation": "Act No. 53 of 1961, Section 5 (Amended 2017)",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Labour and Employment, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/1681",
+            "effective_date": "1961-12-12",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
         }
     },
     {
-        "provision_id": "EMP_005",
-        "title": "Confidentiality Obligations",
-        "topic": "confidentiality",
+        "provision_id": "IND_CPA_S02",
+        "title": "Protection Against Unfair Contract Terms",
+        "topic": "rights",
+        "document_types": [
+            "consumer_complaint",
+            "service_agreement",
+            "loan_agreement",
+            "insurance_document"
+        ],
+        "keywords": [
+            "unfair contract",
+            "consumer",
+            "unreasonable penalty",
+            "unilateral termination",
+            "deficiency in service",
+            "arbitrary forfeiture",
+            "excessive deposit"
+        ],
+        "description": "Under Section 2(46) of the Consumer Protection Act, 2019, an 'unfair contract' means a contract between a manufacturer or trader or service provider on one hand, and a consumer on the other, having such terms which cause significant change in consumer rights, including requiring manifestly excessive security deposits, imposing disproportionate penalties, refusing early termination, or entitlement to unilateral termination without cause.",
+        "conditions": [
+            "Applies when an agreement is entered into with a consumer for goods or services."
+        ],
+        "exceptions": [
+            "Commercial B2B transactions between non-consumers are adjudicated under ordinary contract law rather than consumer dispute commissions."
+        ],
+        "source": {
+            "name": "The Consumer Protection Act, 2019 (Act No. 35 of 2019)",
+            "act": "Consumer Protection Act, 2019",
+            "section": "Section 2(46)",
+            "citation": "Act No. 35 of 2019, Section 2(46)",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Consumer Affairs, Food and Public Distribution, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/15256",
+            "effective_date": "2020-07-20",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
+        }
+    },
+    {
+        "provision_id": "IND_FACT_S51",
+        "title": "Weekly and Daily Working Hours Limitation",
+        "topic": "obligations",
         "document_types": [
             "employment_agreement"
         ],
         "keywords": [
-            "confidentiality",
-            "confidential",
-            "non-public information",
-            "business information",
-            "trade information"
+            "working hours",
+            "normal working schedule",
+            "monday to friday",
+            "break",
+            "overtime",
+            "additional working hours",
+            "rest interval"
         ],
-        "description": "Employment agreements may impose contractual confidentiality obligations concerning specified information.",
+        "description": "Under Sections 51, 54, and 55 of the Factories Act, 1948 and corresponding State Shops and Establishments Acts, no adult worker shall be required or allowed to work in an establishment for more than 48 hours in any week, nor more than 9 hours in any day, and periods of work shall be fixed such that no period shall exceed five hours without an interval for rest of at least half an hour.",
         "conditions": [
-            "The document contains a confidentiality clause."
+            "Applicable to industrial, commercial, and shop/establishment workforces."
         ],
         "exceptions": [
-            "The enforceability and scope of a contractual confidentiality obligation depend on the applicable law and circumstances."
+            "Overtime work is permissible subject to statutory overtime wage rates (normally twice the ordinary rate of wages) and maximum overtime hours caps."
         ],
         "source": {
-            "name": "Authoritative legal source to be linked",
-            "url": "",
-            "jurisdiction": "India"
+            "name": "The Factories Act, 1948 (Act No. 63 of 1948) & State Shops Acts",
+            "act": "Factories Act, 1948",
+            "section": "Sections 51, 54, 55",
+            "citation": "Act No. 63 of 1948, Sections 51-55",
+            "jurisdiction": "India",
+            "source_organization": "Ministry of Labour and Employment, Government of India",
+            "url": "https://www.indiacode.nic.in/handle/123456789/1530",
+            "effective_date": "1949-04-01",
+            "verification_status": "verified_statute",
+            "license": "Government Open Data / Public Domain Legislation"
         }
     }
 ]

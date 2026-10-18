@@ -1,3 +1,6 @@
+const API_BASE = (window.LAW2LIFE_API_BASE || 
+    (window.location.protocol.startsWith("http") && window.location.port === "8000" ? window.location.origin : "http://127.0.0.1:8000"));
+
 const uploadForm = document.getElementById("uploadForm");
 const documentFile = document.getElementById("documentFile");
 const uploadStatus = document.getElementById("uploadStatus");
@@ -25,12 +28,13 @@ uploadForm.addEventListener("submit", async function (event) {
     try {
 
         const response = await fetch(
-            "http://127.0.0.1:8000/api/upload",
+            `${API_BASE}/api/upload`,
             {
                 method: "POST",
                 body: formData
             }
         );
+
 
 
         const result = await response.json();
