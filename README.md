@@ -53,7 +53,7 @@ Law2Life AI is an end-to-end intelligent legal document advisor. It allows users
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 User Document (PDF / DOCX / Image)
