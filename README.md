@@ -235,6 +235,6 @@ Returns recent analysis execution logs from SQLite persistence.
 
 ---
 
-## ⚖️ Legal Disclaimer
+##  Legal Disclaimer
 
 Law2Life AI provides automated document analysis and general legal informational references. It does not provide formal legal advice, representation, or guarantee legal outcomes. Consult a qualified advocate or attorney licensed in your jurisdiction for specific legal counsel.
